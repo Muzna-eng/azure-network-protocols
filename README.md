@@ -22,10 +22,10 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>High-Level Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+- Step 1 Create some sample file shares with various permissions
+- Step 2 Attempt to access file shares as a normal user
+- Step 3 Create an “ACCOUNTANTS” Security Group, assign permissions, an test access
+
 
 <h2>Actions and Observations</h2>
 
@@ -33,7 +33,13 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <img src="https://i.imgur.com/MsVV8P5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Connect/log into DC-1 as your domain admin account (mydomain.com\jane_admin)
+Connect/log into Client-1 as a normal user (mydomain\<someuser>)
+On DC-1, on the C:\ drive, create 4 folders: “read-access”, “write-access”, “no-access”, “accounting”
+Set the following permissions (share the folder) for the “Domain Users” group:
+Folder: “read-access”, Group: “Domain Users”, Permission: “Read”
+Folder: “write-access”,  Group: “Domain Users”, Permissions: “Read/Write”
+Folder: “no-access”, Group: “Domain Admins”, “Permissions: “Read/Write”
 </p>
 <br />
 
