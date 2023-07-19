@@ -33,7 +33,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <img src="https://i.imgur.com/MsVV8P5.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Connect/log into DC-1 as your domain admin account (mydomain.com\jane_admin)
+Connect/log into DC-1 as a domain admin account (mydomain.com\jane_admin)
 Connect/log into Client-1 as a normal user (mydomain\<someuser>)
 On DC-1, on the C:\ drive, create 4 folders: “read-access”, “write-access”, “no-access”, “accounting”
 Set the following permissions (share the folder) for the “Domain Users” group:
@@ -47,14 +47,17 @@ Folder: “no-access”, Group: “Domain Admins”, “Permissions: “Read/Wri
 <img src="https://i.imgur.com/K3Otzhj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+On Client-1, navigate to the shared folder (start, run, \\dc-1)
+Access the folders I created. 
+Back to DC-1, in Active Directory, create a security group called “ACCOUNTANTS”
+On the “accounting” folder created earlier, set the following permissions:
+Folder: “accounting”, Group: “ACCOUNTANTS”, Permissions: “Read/Write”
+On Client-1, as  <someuser>, access the accountants folder and it failed 
+Log out of Client-1 as  <someuser>
+On DC-1, make <someuser> a member of the “ACCOUNTANTS”  Security Group
+Sign back into Client-1 as <someuser> and  access the “accounting” share in \\DC-1\ - And it worked
+
 </p>
 <br />
 
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
+
